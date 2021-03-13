@@ -1,0 +1,357 @@
+@font-face
+    font-family: Allura
+    src: url("/assets/fonts/Allura-Regular.ttf")
+
+*
+    margin: 0
+    padding: 0
+body
+    font-family: Arial, Helvetica, sans-serif
+    background: rgb(255,255,255)
+    background: linear-gradient(180deg, rgba(255,255,255,1) 65%, rgba(154,154,154,1) 100%, rgba(220,220,220,1) 100%)
+nav
+    background: #fff
+    height: 100px
+    display: flex
+    align-items: center
+    z-index: 999
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    #hamburger-parent
+        position: absolute
+        right: 8%
+        visibility: hidden
+        #hamburger
+            cursor: pointer
+            padding: 5px
+            border-radius: 50%
+            &:hover
+                background: #E3E5E8
+            &:active
+                transform: scale(0.9)
+            #particle
+                margin: 5px
+                width: 25px
+                height: 4px
+                background: #362A1B
+    #logo-text
+        margin: 8%
+        cursor: pointer
+        h3
+            font-family: Allura
+            font-weight: 600
+            font-size: 42px
+            color: #A2784A
+    #nav-links
+        display: flex
+        padding: 10px
+        position: absolute
+        right: 12.5%
+
+        #nav-link
+            display: flex
+            justify-content: center
+            position: relative
+            padding: 14px
+            margin: 10px
+            cursor: pointer
+            border-radius: 4px
+            span
+                user-select: none
+                font-weight: 600
+                font-size: 18px
+                color: #362A1B
+            &:hover
+                background: #E3E5E8
+                span
+                    color: #352919
+            &.active
+                border-bottom: 4px solid #A2784A
+                border-radius: 0px
+                span
+                    color: #A2784A
+                &:hover
+                    background: #fff
+
+#root-content-container
+    z-index: -1
+    .content
+        position: relative
+        min-height: calc( 100vh - 100px )
+        margin-top: 100px
+        display: none
+        &.home
+            display: block
+        #text
+            margin: 8%
+            position: absolute
+            width: 50%
+            z-index: 5
+            h1
+                font-size: 60px
+                font-weight: 600
+                color: #202124
+            p
+                font-size: 22px
+                margin-top: 10px
+                color: #202124
+                width: 80%
+            #buttons
+                button
+                    padding: 18px
+                    // background: #fff
+                    border: none
+                    cursor: pointer
+                    margin: 24px 0px
+                    width: 150px
+                    transition: 0.5s
+                    outline: none
+                    span
+                        font-weight: 600
+                        font-size: 16px
+                    &:hover
+                        background: #A48254
+                        span
+                            color: #fff
+        #illustration
+            background: #fff
+            position: absolute
+            width: 700px
+            right: 0
+            bottom: 0
+            mix-blend-mode: darken
+            user-select: none
+            -webkit-user-drag: none
+            z-index: 1
+        &.menu
+            .menu-parent
+                display: flex
+                justify-content: center
+                align-content: center
+                align-items: center
+                height: 100%
+                .menu-container
+                    width: 60%
+                    background: #222A2A
+                    margin: 10px
+                    &.rows
+                        display: flex
+                        .row-1
+                            width: 60%
+                            .head
+                                position: relative
+                                img
+                                    width: 18px
+                                    position: absolute
+                                    right: 10px
+                                    margin: 12.5px 10px
+                                    cursor: pointer
+
+                                .search-engine
+                                    padding: 12px 14px
+                                    outline: none
+                                    width: calc( 100% - 32px )
+                                    border: none
+                                    background: #222A2A
+                                    color: #fff
+                                    font-weight: 600
+                                    font-size: 16px
+                                    &::placeholder
+                                        color: #ebeeee
+
+                            .body
+                                li
+                                    &.item
+                                        padding: 10px
+                                        margin: 2.5px
+                                        cursor: pointer
+                                        list-style-type: none
+                                        span
+                                            color: #fff
+                                        p
+                                            float: right
+                                            color: #fff
+                                            font-size: 15px
+                                        &:hover,&.active
+                                            background: #A2784A
+                        .row-2
+                            width: 40%
+                            padding: 12px
+                            background: #FFDCC9
+                            display: flex
+                            align-items: center
+                            justify-content: center
+                            .illustration
+                                padding: 12px
+                                display: flex
+                                align-items: center
+                                justify-content: center
+                                margin-top: 50px
+                                img
+                                    width: 180px
+                                    height: auto
+                                    user-select: none
+                                    -webkit-user-drag: none
+                            .text
+                                text-align: center
+                                margin: 10px
+                                h3
+                                    font-size: 32px
+                                    font-family: Allura
+                                    color: #805334
+        &.about
+            .about-parent
+                padding: 10px
+                margin: 0 20% 10% 20%
+                .header
+                    padding: 20px
+                    color: #202124
+                    h1
+                        font-size: 42px
+                        position: relative
+                        &::after
+                            content: ""
+                            width: 250px
+                            height: 5px
+                            background: #A2784A
+                            position: absolute
+                            bottom: -10px
+                            left: 0
+                .body
+                    padding: 10px
+                    p
+                        font-size: 18px
+                        margin: 10px
+                        font-weight: 500
+
+        &.find-us
+            .contact-cards
+                display: flex
+                justify-content: center
+                align-items: center
+                height: 100%
+                .contact-card
+                    margin: 10px
+                    min-width: 300px
+                    max-width: 300px
+                    border: 1px solid #ebeeee
+                    background: #fff
+                    cursor: pointer
+                    transition: 0.2s
+                    &:hover
+                        margin-top: -10px
+                    .top
+                        height: 250px
+                        background: gray
+                    .bot
+                        li
+                            list-style-type: none
+                            padding: 12px
+                            &:hover
+                                background: #E3E5E8
+                            p
+                                font-weight: 600
+                                display: inline-block
+                            span
+                                font-size: 15px
+@media only screen and ( max-width:1150px )
+    body
+        padding: 0px
+    nav
+        border-bottom-left-radius: 0px
+        border-bottom-right-radius: 0px
+
+@media only screen and ( max-width:1050px )
+    #root-content-container
+        .content
+            #text
+                width: 60%
+            #illustration
+                width: 600px
+@media only screen and ( max-width:1000px )
+    nav
+        #nav-links
+            visibility: hidden
+            top: 0
+            left: 0 !important
+            width: 250px
+            height: 100vh
+            background: #222A2A
+            position: fixed
+            display: block !important
+            margin: 0
+            #nav-link
+                span
+                    color: #fff
+                    &.active
+                        border-bottom: 4px solid #fff
+                        span
+                            color: #fff
+                            &:hover
+                                background: #222A2A
+        #hamburger-parent
+            visibility: visible
+
+    #root-content-container
+    .content
+        &.menu
+            .menu-parent
+                .menu-container
+                    width: 100% !important
+                    margin: 0 !important
+        &.find-us
+            display: flex !important
+            justify-content: center !important
+            align-items: center !important
+            .contact-cards
+                display: block !important
+                .contact-card
+                    margin: 10px
+                    min-width: 300px
+                    max-width: 300px
+        &.about
+            .about-parent
+                margin: 0 2.5% 2.5% 2.5% !important
+@media only screen and ( max-width:850px )
+    nav
+        height: 70px
+        #nav-links
+            padding: 5px
+            #nav-link
+                margin: 5px
+                span
+                    font-size: 16px
+        #logo-text
+            h3
+                font-size: 32px
+                margin: 5px
+    #root-content-container
+        .content
+            margin-top: 70px
+            height: calc( 100vh - 70px )
+            &.home
+                display: block
+            #text
+                width: auto
+                text-align: center
+                margin-top: 100px
+                h1
+                    font-size: 48px
+                p
+                    font-size: 18px
+                    margin-top: 10px
+                    width: auto
+            #illustration
+                width: 500px
+@media only screen and ( max-width:600px )
+    #root-content-container
+    .content
+        &.menu
+            .menu-parent
+                .menu-container
+                    .row-1
+                        width: 100% !important
+                    .row-2
+                        display: none !important
