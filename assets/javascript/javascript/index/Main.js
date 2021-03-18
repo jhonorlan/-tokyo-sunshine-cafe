@@ -109,25 +109,59 @@ function findItemEl(coffee) {
 	});
 }
 
-function preview(coffee) {
+function preview(coffee, key) {
 	if (!coffee) return;
-	const card = $(`<div class="card"></div>`);
+
+	let flag = CURRENT;
+
+	while (!findItemEl(coffee.name).is(":visible")) {
+		if (key) {
+			flag += 1;
+		} else {
+			flag -= 1;
+		}
+
+		coffee = COFFEES[flag];
+	}
+
+	const card = $(`<div id="card"></div>`);
+	const front = $(`<div class="front"></div>`);
 	const illustration = $(`<div class="illustration"></div>`);
 	const text = $(`<div class="text"><h3>${coffee.name}</h3></div>`);
 
 	const all = COFFEELISTS.find(".item");
 	const element = findItemEl(coffee.name);
 
+	const back = $(`<div class="back">Back</div>`);
 	illustration.append(coffee.image);
 
-	card.append(illustration);
-	card.append(text);
+	front.append(illustration);
+	front.append(text);
+	card.append(front);
+	card.append(back);
 	COFFEEPREVIEW.html(card);
 
 	all.removeClass("active");
 	element.addClass("active");
 
 	CURRENT = COFFEES.indexOf(coffee);
+
+	animateCard(card);
+}
+
+function animateCard(card) {
+	try {
+		card.on("click", function (event) {
+			event.stopImmediatePropagation();
+		});
+		card.flip();
+		card.flip(true);
+		setTimeout(function () {
+			card.flip(false);
+		}, 20);
+	} catch (error) {
+		console.error("Opps! Something not right");
+	}
 }
 
 function addCoffees(coffees) {
@@ -175,10 +209,10 @@ function search() {
 function keydown(data) {
 	switch (data.code) {
 		case "ArrowUp":
-			preview(COFFEES[CURRENT - 1]);
+			preview(COFFEES[CURRENT - 1], false);
 			break;
 		case "ArrowDown":
-			preview(COFFEES[CURRENT + 1]);
+			preview(COFFEES[CURRENT + 1], true);
 			break;
 	}
 }
@@ -194,13 +228,25 @@ function linkClick() {
 	LINKS.removeClass("active");
 	$(this).addClass("active");
 
-	if (HAMBURGER.css("visibility") == "visible")
+	if (HAMBURGER.css("visibility") == "visible") {
 		LINK.css("visibility", "hidden");
+	}
+
+	a();
 }
 
 function adjust() {
 	if (innerWidth >= 1000) {
 		LINK.css("visibility", "visible");
+	}
+	a();
+}
+
+function a() {
+	if (ROOT.find(".home").is(":visible")) {
+		$("body").addClass("has-bg");
+	} else {
+		$("body").removeClass("has-bg");
 	}
 }
 

@@ -11,6 +11,9 @@
 body {
   font-family: Arial, Helvetica, sans-serif;
   background: white;
+}
+
+body.has-bg {
   background: -webkit-gradient(linear, left top, left bottom, color-stop(65%, white), color-stop(100%, #9a9a9a), to(gainsboro));
   background: linear-gradient(180deg, white 65%, #9a9a9a 100%, gainsboro 100%);
 }
@@ -292,6 +295,7 @@ nav #nav-links #nav-link.active:hover {
 
 #root-content-container .content.menu .menu-parent .menu-container.rows .row-2 {
   width: 40%;
+  min-height: 500px;
   padding: 12px;
   background: #FFDCC9;
   display: -webkit-box;
@@ -303,6 +307,26 @@ nav #nav-links #nav-link.active:hover {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  position: relative;
+}
+
+#root-content-container .content.menu .menu-parent .menu-container.rows .row-2 #card {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#root-content-container .content.menu .menu-parent .menu-container.rows .row-2 #card .back {
+  display: none;
 }
 
 #root-content-container .content.menu .menu-parent .menu-container.rows .row-2 .illustration {
@@ -375,7 +399,7 @@ nav #nav-links #nav-link.active:hover {
   font-weight: 500;
 }
 
-#root-content-container .content.find-us .contact-cards {
+#root-content-container .content.find-us .contact-parent {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -388,7 +412,20 @@ nav #nav-links #nav-link.active:hover {
   height: 100%;
 }
 
-#root-content-container .content.find-us .contact-cards .contact-card {
+#root-content-container .content.find-us .contact-parent .contact-cards {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 100%;
+}
+
+#root-content-container .content.find-us .contact-parent .contact-cards .contact-card {
   margin: 10px;
   min-width: 300px;
   max-width: 300px;
@@ -399,30 +436,30 @@ nav #nav-links #nav-link.active:hover {
   transition: 0.2s;
 }
 
-#root-content-container .content.find-us .contact-cards .contact-card:hover {
+#root-content-container .content.find-us .contact-parent .contact-cards .contact-card:hover {
   margin-top: -10px;
 }
 
-#root-content-container .content.find-us .contact-cards .contact-card .top {
+#root-content-container .content.find-us .contact-parent .contact-cards .contact-card .top {
   height: 250px;
   background: gray;
 }
 
-#root-content-container .content.find-us .contact-cards .contact-card .bot li {
+#root-content-container .content.find-us .contact-parent .contact-cards .contact-card .bot li {
   list-style-type: none;
   padding: 12px;
 }
 
-#root-content-container .content.find-us .contact-cards .contact-card .bot li:hover {
+#root-content-container .content.find-us .contact-parent .contact-cards .contact-card .bot li:hover {
   background: #E3E5E8;
 }
 
-#root-content-container .content.find-us .contact-cards .contact-card .bot li p {
+#root-content-container .content.find-us .contact-parent .contact-cards .contact-card .bot li p {
   font-weight: 600;
   display: inline-block;
 }
 
-#root-content-container .content.find-us .contact-cards .contact-card .bot li span {
+#root-content-container .content.find-us .contact-parent .contact-cards .contact-card .bot li span {
   font-size: 15px;
 }
 
@@ -475,17 +512,6 @@ nav #nav-links #nav-link.active:hover {
   .content.menu .menu-parent .menu-container {
     width: 100% !important;
     margin: 0 !important;
-  }
-  .content.find-us {
-    display: -webkit-box !important;
-    display: -ms-flexbox !important;
-    display: flex !important;
-    -webkit-box-pack: center !important;
-        -ms-flex-pack: center !important;
-            justify-content: center !important;
-    -webkit-box-align: center !important;
-        -ms-flex-align: center !important;
-            align-items: center !important;
   }
   .content.find-us .contact-cards {
     display: block !important;
